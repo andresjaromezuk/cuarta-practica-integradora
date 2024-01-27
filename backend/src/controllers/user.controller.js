@@ -1,4 +1,4 @@
-import { dbUser } from '../dao/models/mongoose/user.mongoose.js'
+import { dbUser } from '../dao/mongoose/user.mongoose.js'
 
 
 export const userController = {

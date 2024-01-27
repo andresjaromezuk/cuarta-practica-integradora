@@ -1,20 +1,18 @@
 import { Router } from 'express'
-
-import { productController } from '../../controllers/product.controller.js'
+import { handleGet, handlePost, handlePut, handleDelete } from '../../controllers/product.controller.js'
+import multerMiddleware from '../../middleware/multer.js'
+const upload = multerMiddleware('images', 'product')
 
 export const productRouter = Router()
 
 //Obtener productos
-productRouter.get('/', productController.getAll)
+productRouter.get('/:id?', handleGet)
 
-//Obtener producto
-productRouter.get('/:id',  productController.getById)
+// //Crear producto
+productRouter.post('/', upload.single('image'), handlePost)
 
-//Crear producto
-productRouter.post('/', productController.create)
+// //Modificar producto
+productRouter.put('/:id', upload.single('image'), handlePut)
 
-//Modificar producto
-productRouter.put('/:pid',  productController.update)
-
-//Eliminar producto
-productRouter.delete('/:pid',  productController.delete)
+// //Eliminar producto
+productRouter.delete('/:id', handleDelete)

@@ -2,7 +2,7 @@ import passport from 'passport'
 import {Strategy as LocalStrategy} from 'passport-local'
 import {Strategy as GithubStrategy} from 'passport-github2'
 import { ExtractJwt, Strategy as JwtStrategy} from 'passport-jwt'
-import {dbUser} from '../dao/models/mongoose/user.mongoose.js'
+import {dbUser} from '../dao/mongoose/user.mongoose.js'
 import {githubClientId, githubClientSecret, githubCallbackUrl} from '../config/github.config.js'
 import {JWT_PRIVATE_KEY} from '../config/auth.config.js'
 import {encrypt} from "../utils/encryptor.js"

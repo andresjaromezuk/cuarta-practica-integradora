@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 import { randomUUID } from "node:crypto"
-import { createHash, isValidPassword } from '../../../utils/encryptor.js'
+import { createHash, isValidPassword } from '../../utils/encryptor.js'
 
 const userSchema = new mongoose.Schema({
   _id: { type: String, default: randomUUID },

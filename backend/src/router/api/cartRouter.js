@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import {cartManager} from '../../dao/services/cartManager.mongoose.js'
-import {productManager} from '../../dao/services/productManager.mongoose.js'
+//import {productManager} from '../../dao/services/productManager.mongoose.js'
 import { cartController } from '../../controllers/cart.controller.js'
 
 export const cartRouter = Router()

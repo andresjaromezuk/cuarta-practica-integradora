@@ -1,53 +1,42 @@
-import {productManager} from '../dao/services/productManager.mongoose.js'
+import productDao from "../dao/factory.js"
 
-export const productController = {
-    getAll: async (req,res,next) =>{
-        const products =  await productManager.getProducts(req.query)
-        if (products.length === 0) {
-            return res.status(404).json({status: "Error", error: "No existen productos."})
-        }
-        return res.status(200).json({status: "Success", payload: products})
-    },
+export async function handleGet(req, res, next){
+    try {
+        let result
+        if (req.params.id){
+            result = await productDao.readOne({ _id: req.params.id }) 
+        }else{
+            result = await productDao.readManyPaginated(req.query, 'products')
+        } 
+        return res.status(200).json({status: "Success", payload: result})
+    } catch (error) {
+        next(error)
+    }
+}
 
-    getById: async (req,res, next)=>{
-        try {
-            const id = req.params.id
-            const product = await productManager.getProductById(id)
-            return res.status(200).json({status: "Success", payload: product})
-        } catch (error) {
-            console.log(error)
-            res.status(404).json({status: "Error", error: error.message})
-        }
-    },
+export async function handlePost(req, res, next){
+    try {
+        const product = await productDao.create(req.body, req.file)
+        return res.status(200).json({status: "Success", payload: product})
+    } catch (error) {
+        next(error)
+    }
+}
 
-    create:   async (req,res, next)=>{
-        try {
-            const {body} = req
-            const product = await productManager.addProduct(body)
-            return res.status(200).json({status: "Success", payload: product})
-        } catch (error) {
-            res.status(500).json({status: "Error", error: error.message})
-        }
-    },
+export async function handlePut(req, res, next){
+    try {
+        const product = await productDao.updateOne({ _id: req.params.id }, req.body, req.file)
+        return res.status(200).json({status: "Success", payload: product})
+    } catch (error) {
+        next(error)
+    }
+}
 
-    update: async (req, res, next)=>{
-        try {
-            const {pid} = req.params
-            const {body} = req
-            const product = await productManager.updateProduct(pid, body)
-            return res.status(200).json({status: "Success", payload: product})
-        } catch (error) {
-            res.status(500).json({status: "Error", error: error.message})
-        }
-    },
-
-    delete: async (req, res, next)=>{
-        try {
-            const {pid} = req.params
-            const product = await productManager.deleteProduct(pid)
-            return res.status(200).json({status: "Success", payload: product})
-        } catch (error) {
-            res.status(500).json({status: "Error", error: error.message})
-        }
+export async function handleDelete(req, res, next){
+    try {
+        const product = await productDao.deleteOne(req.params.id)
+        return res.status(200).json({status: "Success", payload: product})
+    } catch (error) {
+        next(error)
     }
 }

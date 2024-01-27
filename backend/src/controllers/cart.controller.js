@@ -1,5 +1,6 @@
 import {cartManager} from '../dao/services/cartManager.mongoose.js'
-import {productManager} from '../dao/services/productManager.mongoose.js'
+//import {productManager} from '../dao/services/productManager.mongoose.js'
+import productDao from '../dao/factory.js'
 
 export const cartController = {
     create: async (req, res) => {
@@ -24,7 +25,7 @@ export const cartController = {
    addProduct:  async (req, res) => {
         try {      
             const {cid, pid} = req.params
-            await productManager.getProductById(pid)
+            await productDao.readOneById(pid)
             const cart = await cartManager.addProductToCart(cid, pid)
             return res.status(200).json({status: "Success", payload: cart})
         } catch (error) {
@@ -36,7 +37,7 @@ export const cartController = {
         try {      
             const {cid, pid} = req.params
             await cartManager.getCartById(cid)
-            await productManager.getProductById(pid)
+            await productDao.readOneById(pid)
             const cart = await cartManager.deleteProductFromCart(cid, pid)
             return res.status(200).json({status: "Success", payload: cart})
         } catch (error) {
@@ -70,7 +71,7 @@ export const cartController = {
         try {      
             const {cid, pid} = req.params
             const {body} = req
-            await productManager.getProductById(pid)
+            await productDao.readOneById(pid)
             const cart = await cartManager.updateProductCart(cid, pid, body)
             return res.status(200).json({status: "Success", payload: cart})
         } catch (error) {
