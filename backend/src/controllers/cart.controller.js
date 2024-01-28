@@ -1,91 +1,53 @@
-import {cartManager} from '../dao/services/cartManager.mongoose.js'
-//import {productManager} from '../dao/services/productManager.mongoose.js'
-import productDao from '../dao/factory.js'
+import { cartDao } from '../dao/factory.js'
+import { cartService } from '../services/cart.service.js'
 
-export const cartController = {
-    create: async (req, res) => {
-        try {
-            const cart = await cartManager.createCart()
-            return res.status(200).json({status: "Success", payload: cart})
-        } catch (error) {
-            res.status(500).json({status: "Error", error: error.message})
+export async function handleGet(req, res, next){
+    try {
+        let result
+        if(req.params.id){
+            result = await cartDao.readOnePopulated(req.params.id)
+        }else{
+            result = await cartDao.readManyPopulated()
         }
-    },
+        return res.status(200).json({status: "Success", payload: result})
+    } catch (error) {
+       next(error) 
+    }
+}
 
-    showCart: async (req, res) => {
-        try {
-            const {cid} = req.params
-            const cart = await cartManager.getCartById(cid)
-            return res.status(200).json({status: "Success", payload: cart})
-        } catch (error) {
-            res.status(404).json({status: "Error", error: error.message})
-        }
-   },
+export async function handlePost(req, res, next){
+    try {
+        const result = await cartDao.create({products:[]})
+        return res.status(200).json({status: "Success", payload: result})
+    } catch (error) {
+       next(error) 
+    }
+}
 
-   addProduct:  async (req, res) => {
-        try {      
-            const {cid, pid} = req.params
-            await productDao.readOneById(pid)
-            const cart = await cartManager.addProductToCart(cid, pid)
-            return res.status(200).json({status: "Success", payload: cart})
-        } catch (error) {
-            res.status(500).json({status: "Error", error: error.message})
+export async function handlePut(req, res, next){
+    try {
+        let result
+        if(req.params.pid){
+            result = await cartService.updateProductInCart(req.params.cid, req.params.pid)
+        }else{
+            result = await cartDao.updateOne({_id: req.params.cid}, {$push:{products: req.body}})
         }
-    },
+        return res.status(200).json({status: "Success", payload: result})
+    } catch (error) {
+       next(error) 
+    }
+}
 
-    deleteProduct: async (req, res) => {
-        try {      
-            const {cid, pid} = req.params
-            await cartManager.getCartById(cid)
-            await productDao.readOneById(pid)
-            const cart = await cartManager.deleteProductFromCart(cid, pid)
-            return res.status(200).json({status: "Success", payload: cart})
-        } catch (error) {
-            res.status(500).json({status: "Error", error: error.message})
+export async function handleDelete(req, res, next){
+    try {
+        let result
+        if(req.params.pid){
+            result = await cartService.deleteProductFromCart(req.params.cid, req.params.pid)
+        }else{
+            result = await cartService.emptyCart(req.params.cid)
         }
-    },
-
-    updateCart: async (req, res) => {
-        try {      
-            const {cid} = req.params
-            const {body}= req
-            console.log(body)
-            await cartManager.getCartById(cid)
-            const cart = await cartManager.updateCart(cid, body)
-            return res.status(200).json({status: "Success", payload: cart})
-        } catch (error) {
-            res.status(500).json({status: "Error", error: error.message})
-        }
-    },
-
-    getAll: async (req, res) => {
-        try {      
-            const cart = await cartManager.findAll()
-            return res.status(200).json({status: "Success", payload: cart})
-        } catch (error) {
-            res.status(500).json({status: "Error", error: error.message})
-        }
-    },
-
-    updateProductInCart: async (req, res) => {
-        try {      
-            const {cid, pid} = req.params
-            const {body} = req
-            await productDao.readOneById(pid)
-            const cart = await cartManager.updateProductCart(cid, pid, body)
-            return res.status(200).json({status: "Success", payload: cart})
-        } catch (error) {
-            res.status(500).json({status: "Error", error: error.message})
-        }
-    },
-
-    delete:  async (req, res) => {
-        try {      
-            const {cid} = req.params
-            const cart = await cartManager.emptyCart(cid)
-            return res.status(200).json({status: "Success", payload: cart})
-        } catch (error) {
-            res.status(500).json({status: "Error", error: error.message})
-        }
+        return res.status(200).json({status: "Success", payload: result})
+    } catch (error) {
+       next(error) 
     }
 }

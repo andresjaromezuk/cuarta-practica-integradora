@@ -1,4 +1,4 @@
-import productDao from "../dao/factory.js"
+import {productDao} from "../dao/factory.js"
 
 export async function handleGet(req, res, next){
     try {

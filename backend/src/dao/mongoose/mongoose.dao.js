@@ -92,4 +92,22 @@ export class MongooseDao{
         element.nextLink = element.hasNextPage === false ? null : `/${entity}?limit=1&page=${element.nextPage}`
         return element
     }
+
+    //---------------POPULATIONS-------------------
+
+    async readOnePopulated(criteria, field){
+        const element = await this.#model.findOne(criteria).populate(`${field}`).lean()
+        if (!element){
+            throw new Error("no encontrado")
+        }
+        return element
+    }
+    
+    async readManyPopulated(criteria, field){
+        const element = await this.#model.find(criteria).populate(`${field}`).lean()
+        if (!element){
+            throw new Error("no encontrado")
+        }
+        return element
+    }
 }

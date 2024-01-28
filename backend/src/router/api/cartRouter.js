@@ -1,30 +1,26 @@
 import { Router } from 'express'
-import {cartManager} from '../../dao/services/cartManager.mongoose.js'
+//import {cartManager} from '../../dao/services/cartManager.mongoose.js'
 //import {productManager} from '../../dao/services/productManager.mongoose.js'
-import { cartController } from '../../controllers/cart.controller.js'
-
+//import { cartController } from '../../controllers/cart.controller.js'
+import { handleGet, handlePost, handlePut, handleDelete } from '../../controllers/cart.controller.js'
 export const cartRouter = Router()
 
 //Crear carrito
-cartRouter.post('/', cartController.create)
+cartRouter.post('/', handlePost)
 
 //Obtener carrito
- cartRouter.get('/:cid', cartController.showCart) 
+ cartRouter.get('/:id?', handleGet) 
 
-//Agregar productos al carrito
-cartRouter.post('/:cid/product/:pid', cartController.addProduct)
-
-//Borrar producto de carrito
-cartRouter.delete('/:cid/product/:pid', cartController.deleteProduct)
-
-//Actualizar carrito
-cartRouter.put('/:cid', cartController.updateCart)
-
-//Obtener todos los carritos
-cartRouter.get('/', cartController.getAll)
-
-//Modificar cantidad de productos en el carrito
-cartRouter.put('/:cid/product/:pid', cartController.updateProductInCart)
+ 
+ // //Actualizar carrito
+ cartRouter.put('/:cid', handlePut)
+ 
+ //Modificar cantidad de productos en el carrito
+ cartRouter.put('/:cid/product/:pid', handlePut)
+ 
+ 
+ //Borrar producto de carrito
+ cartRouter.delete('/:cid/product/:pid', handleDelete)
 
 // Vaciar carrito
-cartRouter.delete('/:cid', cartController.delete)
+cartRouter.delete('/:cid', handleDelete)
