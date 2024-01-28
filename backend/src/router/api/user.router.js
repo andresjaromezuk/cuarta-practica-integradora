@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { userController } from '../../controllers/user.controller.js'
+import { handleGet,handlePost, handlePut } from '../../controllers/user.controller.js'
 import {appendJwt} from '../../middleware/authentication.js'
 import {apiUserLogged, apiAdminAccess} from '../../middleware/authorization.js'
 import passport from 'passport'
@@ -12,7 +12,7 @@ userRouter.post('/register',
     session:false
   }),
   appendJwt,
-  userController.register
+  handlePost
 )
 
 userRouter.get('/profile', 
@@ -21,7 +21,7 @@ userRouter.get('/profile',
     session: false
   }),
   apiUserLogged,
-  userController.profile
+  handleGet
 )
 
 userRouter.get('/',
@@ -30,8 +30,8 @@ userRouter.get('/',
     session: false
   }),
   apiAdminAccess,
-  userController.getAll
+  handleGet
  )
 
-userRouter.put('/resetPassword', userController.resetPassword)
+userRouter.put('/resetPassword', handlePut)
 

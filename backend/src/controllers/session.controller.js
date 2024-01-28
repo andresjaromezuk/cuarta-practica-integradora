@@ -1,13 +1,12 @@
-export const sessionController= {
-    login:  (req, res, next) => {
-        res['successfullPost'](req.jwt)
-    },
 
-    current: async (req, res, next) =>{
-        res['successfullGet'](req.user)
-    },
+export async function handleGet(req, res, next){
+    res['successfullGet'](req.user)
+}
 
-    delete: (req, res) => {
-        res['successfullLogout']()
-    }
+export async function handlePost(req, res, next){
+    res['successfullPost'](req.jwt)
+}
+
+export async function handleDelete(req, res, next){
+    res['successfullLogout']()
 }

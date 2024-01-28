@@ -2,18 +2,19 @@ import passport from 'passport'
 import {Strategy as LocalStrategy} from 'passport-local'
 import {Strategy as GithubStrategy} from 'passport-github2'
 import { ExtractJwt, Strategy as JwtStrategy} from 'passport-jwt'
-import {dbUser} from '../dao/mongoose/user.mongoose.js'
+//import {dbUser} from '../dao/mongoose/user.mongoose.js'
+import { userDao } from '../dao/factory.js'
 import {githubClientId, githubClientSecret, githubCallbackUrl} from '../config/github.config.js'
 import {JWT_PRIVATE_KEY} from '../config/auth.config.js'
 import {encrypt} from "../utils/encryptor.js"
 
-const COOKIE_OPTS = { signed: true, maxAge: 1000 * 60 * 60,  domain: 'localhost', httpOnly: true }
+//const COOKIE_OPTS = { signed: true, maxAge: 1000 * 60 * 60,  domain: 'localhost', httpOnly: true }
 
 passport.use('login', new LocalStrategy({
   usernameField: 'email'
 }, async (email, password, done) =>{
   try {
-    const user = await dbUser.login(email, password)
+    const user = await userDao.login(email, password)
     done(null, user)
   } catch (error) {
     done(error)
@@ -25,7 +26,7 @@ passport.use('register', new LocalStrategy({
   usernameField: 'email'
 }, async (req, _u, _p, done)=>{
   try{
-    const user = await dbUser.register(req.body)
+    const user = await userDao.register(req.body)
     done(null, user)
   } catch (error){
     done(error)

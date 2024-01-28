@@ -2,10 +2,9 @@ import { Router } from 'express'
 import {apiUserLogged} from '../../middleware/authorization.js'
 import {appendJwt, removeJwtFromCookies} from '../../middleware/authentication.js'
 import passport from 'passport'
-import { sessionController } from '../../controllers/session.controller.js'
+import { handlePost, handleDelete, handleGet } from '../../controllers/session.controller.js'
 
 export const sessionRouter = Router()
-
 
 sessionRouter.post('/login',
   passport.authenticate('login', {
@@ -13,7 +12,7 @@ sessionRouter.post('/login',
     session:false
   }),
   appendJwt,
-  sessionController.login
+  handlePost
 )
 
 sessionRouter.get('/current', 
@@ -22,10 +21,10 @@ passport.authenticate('jwt',{
   session:false
 }),
 apiUserLogged,
-sessionController.current
+handleGet
 )
 
 sessionRouter.delete('/logout', 
   removeJwtFromCookies,
-  sessionController.delete
-  )
+  handleDelete
+)
