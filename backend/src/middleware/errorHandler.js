@@ -7,6 +7,8 @@ export function errorHandler(error, req, res, next){
         res.status(404)
     } else if(error.message.includes('recurso')){
         res.status(403)
+    } else if(error.message.includes('requerido')){
+        res.status(422)
     }
     console.log(error)
 

@@ -4,7 +4,8 @@ import { MongooseDao}  from './mongoose.dao.js'
 
 const cartSchema = new Schema({
   _id: { type: String, default: randomUUID },
-  products: [{product:{type: String, ref: 'products', required: true }, quantity:{type: Number, required: true}}]
+  products: [{product:{type: String, ref: 'products', required: true }, quantity:{type: Number, required: true}}],
+  user_id:{ type: String, default: ""}
 }, {
   strict: 'throw',
   versionKey: false,
