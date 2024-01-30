@@ -1,7 +1,7 @@
 import express, { json, urlencoded } from 'express'
 import methodOverride from 'method-override' 
 import {apiRouter} from './router/api/apiRouter.js'
-import { webRouter } from './router/web/chat.router.js'
+import { webRouter } from './router/web/web.router.js'
 import {engine} from 'express-handlebars'
 import { sessions } from './middleware/sessions.js'
 import { authenticate } from './middleware/authentication.js'

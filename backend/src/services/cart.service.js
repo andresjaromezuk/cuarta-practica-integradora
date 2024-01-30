@@ -32,7 +32,7 @@ class CartService{
             } 
         }
 
-        const updatedCart= await cartDao.updateOne(cid, products)
+        const updatedCart= await cartDao.updateOne({_id:cid},{$set:{products: products}} )
 
         return updatedCart
     }

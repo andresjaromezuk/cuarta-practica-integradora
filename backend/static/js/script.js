@@ -1,6 +1,7 @@
 const form = document.querySelector('form')
 const input = document.querySelector('input')
 const ulMensajes = document.querySelector('ul')
+
 let username
 Swal.fire({
     title: 'Chat',

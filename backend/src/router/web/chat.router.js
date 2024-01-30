@@ -1,8 +1,16 @@
 import { Router } from 'express'
 import { chatController } from '../../controllers/chat.controller.js'
-
-export const webRouter = Router()
+import { apiUserLogged } from '../../middleware/authorization.js'
+import passport from 'passport'
+import { appendJwtAsCookie } from '../../middleware/authentication.js'
+export const chatRouter = Router()
 
 
 //Chat
-webRouter.get('/chat', chatController.chat)
+chatRouter.get('/chat',
+passport.authenticate('jwt',{
+    failWithError: true,
+    session:false
+  }),
+  apiUserLogged,
+chatController.chat)

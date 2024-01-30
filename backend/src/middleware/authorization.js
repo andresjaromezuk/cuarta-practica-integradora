@@ -13,7 +13,7 @@ export function apiUserLogged(req, res, next){
 }
 
 export function apiAdminAccess(req, res, next){
-    if(req.user.role !== 'admin'){
+    if(req?.user?.role !== 'admin'){
         return next(new Error('No tienes permiso para acceder a este recurso'))
     }
     next()

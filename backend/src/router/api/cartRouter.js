@@ -1,8 +1,8 @@
 import { Router } from 'express'
-//import {cartManager} from '../../dao/services/cartManager.mongoose.js'
-//import {productManager} from '../../dao/services/productManager.mongoose.js'
-//import { cartController } from '../../controllers/cart.controller.js'
 import { handleGet, handlePost, handlePut, handleDelete } from '../../controllers/cart.controller.js'
+import passport from 'passport'
+import {apiUserLogged} from '../../middleware/authorization.js'
+
 export const cartRouter = Router()
 
 //Crear carrito
@@ -16,7 +16,13 @@ cartRouter.post('/', handlePost)
  cartRouter.put('/:cid', handlePut)
  
  //Modificar cantidad de productos en el carrito
- cartRouter.put('/:cid/product/:pid', handlePut)
+ cartRouter.put('/:cid/product/:pid',
+ passport.authenticate('jwt',{
+    failWithError: true,
+    session:false
+  }),
+  apiUserLogged,  
+ handlePut)
  
  
  //Borrar producto de carrito

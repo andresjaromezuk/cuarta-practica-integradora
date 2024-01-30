@@ -84,7 +84,7 @@ class TicketService{
             const saved_ticket = await ticketRepository.save(ticket)
             
             //Envío de email
-            await emailService.send("andres.jaromezuk@gmail.com", "¡Gracias por tu compra!", 
+            await emailService.send(purchaser, "¡Gracias por tu compra!", 
             `Tu pedido n° ${saved_ticket.code} pronto será despachado`)
 
             //Actualizar carrito
