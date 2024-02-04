@@ -1,4 +1,3 @@
-import {productDao} from "../dao/factory.js"
 import { productService } from "../services/product.service.js"
 
 export async function handleGet(req, res, next){

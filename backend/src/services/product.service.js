@@ -6,9 +6,7 @@ class ProductService{
 
     async readOne(criteria){
         const result = await productDao.readOne(criteria)
-        if(!result){
-            throw new NotFoundError('Product')
-        }
+        if(!result)throw new NotFoundError('Product')
         return result
     }
 

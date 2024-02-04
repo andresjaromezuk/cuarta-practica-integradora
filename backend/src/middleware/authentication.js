@@ -1,23 +1,31 @@
+//Passport
 import passport from 'passport'
 import {Strategy as LocalStrategy} from 'passport-local'
 import {Strategy as GithubStrategy} from 'passport-github2'
 import { ExtractJwt, Strategy as JwtStrategy} from 'passport-jwt'
-//import {dbUser} from '../dao/mongoose/user.mongoose.js'
-import { userDao } from '../dao/factory.js'
+
+//Config
 import {githubClientId, githubClientSecret, githubCallbackUrl} from '../config/github.config.js'
 import {JWT_PRIVATE_KEY} from '../config/auth.config.js'
+
+//Utils
 import {encrypt} from "../utils/encryptor.js"
+
+//Services
+import { userService } from '../services/user.service.js'
+import { sessionService } from '../services/session.service.js'
 
 //Errors
 import { AuthenticationError } from '../models/errors/authentication.errors.js'
 
+//Cookies
 const COOKIE_OPTS = { signed: true, maxAge: 1000 * 60 * 60,  domain: 'localhost', httpOnly: true }
 
 passport.use('login', new LocalStrategy({
   usernameField: 'email'
 }, async (email, password, done) =>{
   try {
-    const user = await userDao.login(email, password)
+    const user = await sessionService.login(email, password)
     done(null, user)
   } catch (error) {
     done(error)
@@ -29,7 +37,7 @@ passport.use('register', new LocalStrategy({
   usernameField: 'email'
 }, async (req, _u, _p, done)=>{
   try{
-    const user = await userDao.register(req.body)
+    const user = await userService.create(req.body)
     done(null, user)
   } catch (error){
     done(error)
@@ -66,7 +74,7 @@ passport.use('github', new GithubStrategy({
 }, async function verify(accessToken, refreshToken, profile, done) {
   console.log(profile)
 
-  const user = await userDao.readOne({ email: profile.username })
+  const user = await userService.readOne({ email: profile.username })
   if (user) {
     return done(null, {
       ...user.publicInfo(),
@@ -75,7 +83,7 @@ passport.use('github', new GithubStrategy({
   }
 
   try {
-    const registered = await userDao.create({
+    const registered = await userService.create({
       email: profile.username,
       password: '(sin especificar)',
       firstName: profile.displayName,

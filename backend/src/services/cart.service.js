@@ -9,13 +9,13 @@ class CartService{
 
         const item = await productDao.readOne({_id: pid})
         if (!item){
-            throw new NotFoundError()
+            throw new NotFoundError('Product')
         }
 
         const cart = await cartDao.readOne({_id: cid})
         
         if (!cart){
-            throw new NotFoundError()
+            throw new NotFoundError('Cart')
         }
 
         let {products} = cart

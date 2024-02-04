@@ -1,4 +1,4 @@
-export class CurrentSessionDto{
+export class UserDto{
     #email
     #firstName
     #lastName

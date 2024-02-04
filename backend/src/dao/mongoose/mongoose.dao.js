@@ -26,17 +26,17 @@ export class MongooseDao{
 
     async readOne(criteria){
         const result = await this.#model.findOne(criteria).lean()
-        if(!result){
-            throw new Error('no encontrado')
-        }
+        // if(!result){
+        //     throw new Error('no encontrado')
+        // }
         return result
     }
 
     async readMany(criteria){
         const result = await this.#model.find(criteria).lean()
-        if(!result){
-            throw new Error('no encontrado')
-        }
+        // if(!result){
+        //     throw new Error('no encontrado')
+        // }
         return result
     }
 

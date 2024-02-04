@@ -1,13 +1,13 @@
 import { userDao } from "../dao/factory.js"
-
+import { userService } from "../services/user.service.js"
 export async function handleGet(req, res, next){
    try {
        let result
 
        if(req.path.includes('profile')){
-            result = await userDao.readOne(req.user.email)
+            result = await userService.readOne(req.user.email)
        }else{
-            result = await userDao.readMany()
+            result = await userService.readMany()
        }
     
         res['successfullGet'](result)

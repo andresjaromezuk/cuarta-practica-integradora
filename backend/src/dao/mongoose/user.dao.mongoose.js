@@ -2,7 +2,6 @@ import mongoose from "mongoose"
 import { randomUUID } from "node:crypto"
 import { createHash, isValidPassword } from '../../utils/encryptor.js'
 import { MongooseDao } from "./mongoose.dao.js"
-import { CurrentSessionDto } from "../../dto/current.session.dto.js"
 
 const userSchema = new mongoose.Schema({
   _id: { type: String, default: randomUUID },
@@ -35,32 +34,16 @@ class UserDaoMongoose extends MongooseDao{
     super(model)
   }
 
-  async register (body){
+  async create (body){
     const {password} = body
-    const checkUser = await mongoose.model('users').findOne({email:body.email}).lean()
-    if(checkUser){
-        throw new Error ('El usuario ya está registrado')
-    }
+    // const checkUser = await mongoose.model('users').findOne({email:body.email}).lean()
+    // if(checkUser){
+    //     throw new Error ('El usuario ya está registrado')
+    // }
     const hash = createHash(password)
     body.password = hash
     const user = await super.create(body)
     return user
-  }
-
-  async login (email, password){
-     
-    const user = await super.readOne({email: email})
-
-    if(!user){
-        throw new Error ('Credenciales incorrectas')
-    }
-    const isValid = isValidPassword(password, user)
-
-    if(!isValid){
-      throw new Error ('Credenciales incorrectas')
-    }
-
-    return new CurrentSessionDto(user).dto()
   }
 
   async resetPassword (body) {
@@ -69,19 +52,15 @@ class UserDaoMongoose extends MongooseDao{
 
     const actualizado = await super.updateOne({ email },{ $set: { password: newPassword } })
 
-    if (!actualizado) {
-      throw new Error('usuario no encontrado')
-    }
-
     return actualizado
   }
 
   async readOne(email){
-    const result = await mongoose.model('users').findOne({email: email}).select('-password')
+    const result = await mongoose.model('users').findOne({email: email})
     return result 
   }
   
-  async readMany(email){
+  async readMany(){
     const result = await mongoose.model('users').find({}).select('-password')
     return result 
   }
