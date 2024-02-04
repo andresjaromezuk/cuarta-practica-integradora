@@ -8,6 +8,9 @@ import {githubClientId, githubClientSecret, githubCallbackUrl} from '../config/g
 import {JWT_PRIVATE_KEY} from '../config/auth.config.js'
 import {encrypt} from "../utils/encryptor.js"
 
+//Errors
+import { AuthenticationError } from '../models/errors/authentication.errors.js'
+
 const COOKIE_OPTS = { signed: true, maxAge: 1000 * 60 * 60,  domain: 'localhost', httpOnly: true }
 
 passport.use('login', new LocalStrategy({
@@ -47,7 +50,7 @@ passport.use('jwt', new JwtStrategy({
     }
     console.log(`\n\n\n\n token ${token} \n\n\n`)
     if(!token){
-      throw new Error('Debes iniciar sesión')
+      throw new AuthenticationError()
     }
     return token
   }]),
@@ -63,7 +66,7 @@ passport.use('github', new GithubStrategy({
 }, async function verify(accessToken, refreshToken, profile, done) {
   console.log(profile)
 
-  const user = await dbUser.findOne({ email: profile.username })
+  const user = await userDao.readOne({ email: profile.username })
   if (user) {
     return done(null, {
       ...user.publicInfo(),
@@ -72,7 +75,7 @@ passport.use('github', new GithubStrategy({
   }
 
   try {
-    const registered = await dbUser.create({
+    const registered = await userDao.create({
       email: profile.username,
       password: '(sin especificar)',
       firstName: profile.displayName,

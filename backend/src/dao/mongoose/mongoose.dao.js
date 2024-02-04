@@ -83,11 +83,6 @@ export class MongooseDao{
             element = await this.#model.paginate(condition,{limit:limit, page: page})
         }
 
-        if (element.length === 0) {
-            throw new Error ('no encontrado')
-            //return res.status(404).json({status: "Error", error: "No existen productos."})
-        }
-
         element.prevLink = element.hasPrevPage === false ? null : `/${entity}?limit=1&page=${element.prevPage}`
         element.nextLink = element.hasNextPage === false ? null : `/${entity}?limit=1&page=${element.nextPage}`
         return element

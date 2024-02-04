@@ -1,14 +1,16 @@
 export function errorHandler(error, req, res, next){
-    if (error.message.includes('está registrado')){
+    if (error.type === 5 ){
         res.status(409)
-    } else if (error.message.includes('incorrectas') || error.message.includes('sesión')){
+    } else if (error.type === 1){
         res.status(401)
-    }else if(error.message.includes('no encontrado')){
+    }else if(error.type === 2){
         res.status(404)
-    } else if(error.message.includes('recurso')){
+    } else if(error.type === 3){
         res.status(403)
-    } else if(error.message.includes('requerido')){
+    } else if(error.type === 6){
         res.status(422)
+    } else{
+        res.status(500)
     }
     console.log(error)
 

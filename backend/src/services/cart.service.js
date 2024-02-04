@@ -1,18 +1,21 @@
 import {cartDao} from '../dao/factory.js' 
 import {productDao} from '../dao/factory.js' 
 
+//Errors
+import { NotFoundError } from '../models/errors/notfound.error.js'
+
 class CartService{
     async updateProductInCart(cid, pid){
 
         const item = await productDao.readOne({_id: pid})
         if (!item){
-            throw new Error("Producto no encontrado")
+            throw new NotFoundError()
         }
 
         const cart = await cartDao.readOne({_id: cid})
         
         if (!cart){
-            throw new Error("Carrito no encontrado")
+            throw new NotFoundError()
         }
 
         let {products} = cart

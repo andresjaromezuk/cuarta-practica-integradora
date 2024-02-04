@@ -2,16 +2,13 @@ import {ticketDao, userDao, productDao, cartDao} from '../dao/factory.js'
 import {Ticket} from '../models/Ticket.js'
 import { ticketRepository } from '../repositories/ticket.respository.js'
 import {emailService} from './email.service.js'
+
+//Errors
+import { NotFoundError } from '../models/errors/notfound.error.js'
+import { UnprocessableEntityError } from '../models/errors/unprocessable.entity.error.js'
+
 class TicketService{
     constructor(){}
-
-    // _id
-    // code 
-    // purchase_datatime 
-    // amount 
-    // purchaser 
-    // products -> ids de producto
-    // status
 
     async discount_stock_and_set_amount(products){
 
@@ -23,7 +20,7 @@ class TicketService{
             const product = await productDao.readOne({_id: products[i].product})
             
             //Buscamos si el producto existe
-            if (!product) throw new Error('Producto no encontrado')
+            if (!product) throw NotFoundError('Product')
             console.log(product)
             
             //Chequeamos stock y descontamos
@@ -57,8 +54,8 @@ class TicketService{
             const user = await userDao.readOne(purchaser)
             
             //Validaciones
-            if(!user) throw new Error('no encontrado')
-            if (products.length === 0) throw new Error('Producto requerido')
+            if(!user) throw new NotFoundError('User')
+            if (products.length === 0) throw new UnprocessableEntityError('Product')
     
             const {amount,no_stock_products} = await this.discount_stock_and_set_amount(products)
            
