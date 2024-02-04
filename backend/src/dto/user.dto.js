@@ -1,4 +1,5 @@
 export class UserDto{
+    #_id
     #email
     #firstName
     #lastName
@@ -7,6 +8,7 @@ export class UserDto{
     #role
    
     constructor(user){
+        this._id = user._id
         this.email = user.email 
         this.firstName = user.firstName
         this.lastName = user.lastName
@@ -17,6 +19,7 @@ export class UserDto{
 
     dto(){
         return{
+           _id: this._id,
            email: this.email,
            firstName: this.firstName,
            lastName: this.lastName,

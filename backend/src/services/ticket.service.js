@@ -1,10 +1,19 @@
+//DAO
 import {ticketDao, userDao, productDao, cartDao} from '../dao/factory.js'
+
+//Model
 import {Ticket} from '../models/Ticket.js'
+
+//Repository
 import { ticketRepository } from '../repositories/ticket.respository.js'
+
+//Services
 import {emailService} from './email.service.js'
+import {productService} from './product.service.js'
+import {userService} from './user.service.js'
+import {cartService} from './cart.service.js'
 
 //Errors
-import { NotFoundError } from '../models/errors/notfound.error.js'
 import { UnprocessableEntityError } from '../models/errors/unprocessable.entity.error.js'
 
 class TicketService{
@@ -17,18 +26,15 @@ class TicketService{
 
         for (let i = 0; i < products.length; i++) {
 
-            const product = await productDao.readOne({_id: products[i].product})
-            
             //Buscamos si el producto existe
-            if (!product) throw NotFoundError('Product')
-            console.log(product)
-            
+            const product = await productService.readOne({_id: products[i].product})
+                       
             //Chequeamos stock y descontamos
             if (product.stock < products[i].quantity){
                 no_stock_products.push(product._id)
             }else{
                 product.stock -= products[i].quantity
-                const updated_product = await productDao.updateOne({_id: product._id},product)
+                const updated_product = await productService.updateOne({_id: product._id},product)
                 console.log("updated_product", updated_product)
                 amount += product.price * products[i].quantity
             }
@@ -50,11 +56,11 @@ class TicketService{
     async create(body){
             let {purchaser , products} = body
             
-            //Búsqueda de usuario
-            const user = await userDao.readOne(purchaser)
+            //Búsqueda de usuario (service arroja su error)
+            const user = await userService.readOne(purchaser)
+            console.log(user)
             
             //Validaciones
-            if(!user) throw new NotFoundError('User')
             if (products.length === 0) throw new UnprocessableEntityError('Product')
     
             const {amount,no_stock_products} = await this.discount_stock_and_set_amount(products)
@@ -69,14 +75,14 @@ class TicketService{
                     products_to_ticket.push(item)
                 }
             });
-           
     
             //Crear Ticket
-            const ticket = new Ticket()
-            ticket.amount = amount
-            ticket.user_id = user._id
-            ticket.products = products_to_ticket
-            ticket.purchaser = purchaser
+            const ticket = new Ticket({
+                amount,
+                user_id: user._id,
+                products: products_to_ticket,
+                purchaser: purchaser 
+            })
             ticket.complete()
             const saved_ticket = await ticketRepository.save(ticket)
             
@@ -87,7 +93,7 @@ class TicketService{
             //Actualizar carrito
             console.log(products_to_ticket)
             if(products_to_cart.length > 0){
-                const cart = await cartDao.updateOne({user_id: user._id }, {$set:{products: products_to_cart}})
+                const cart = await cartService.updateOne({user_id: user._id }, {$set:{products: products_to_cart}})
                 console.log(cart)
             }
             return saved_ticket

@@ -26,25 +26,16 @@ export class MongooseDao{
 
     async readOne(criteria){
         const result = await this.#model.findOne(criteria).lean()
-        // if(!result){
-        //     throw new Error('no encontrado')
-        // }
         return result
     }
 
     async readMany(criteria){
         const result = await this.#model.find(criteria).lean()
-        // if(!result){
-        //     throw new Error('no encontrado')
-        // }
         return result
     }
 
     async updateOne(criteria, newData){
         const elementUpdated = await this.#model.findOneAndUpdate(criteria, newData, { new: true, projection: { _id: 0 } })
-        if(!elementUpdated){
-            throw new Error('no encontrado')
-        }
         return elementUpdated
     }
 
@@ -92,17 +83,11 @@ export class MongooseDao{
 
     async readOnePopulated(criteria, field){
         const element = await this.#model.findOne(criteria).populate(`${field}`).lean()
-        if (!element){
-            throw new Error("no encontrado")
-        }
         return element
     }
     
     async readManyPopulated(criteria, field){
         const element = await this.#model.find(criteria).populate(`${field}`).lean()
-        if (!element){
-            throw new Error("no encontrado")
-        }
         return element
     }
 }

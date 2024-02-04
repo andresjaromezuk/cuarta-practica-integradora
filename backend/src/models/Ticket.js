@@ -14,15 +14,23 @@ export class Ticket{
 
 
     constructor(
-        _id = randomUUID(),
+        {_id = randomUUID(),
         code = Number(`${Date.now()}${randomInt(1000, 9999)}`) ,
         purchase_datatime = new Date,
         status = Ticket.statuses.PENDING,
+        amount,
+        purchaser, 
+        user_id,
+        products}
     ){
         this.#_id = _id
         this.#code  = code
         this.#purchase_datatime  = purchase_datatime
         this.#status = status
+        this.#amount = amount
+        this.#purchaser = purchaser
+        this.#user_id = user_id
+        this.#products =  products
     }
 
     get id(){return this.#_id}  

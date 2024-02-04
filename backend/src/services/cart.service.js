@@ -1,22 +1,42 @@
-import {cartDao} from '../dao/factory.js' 
-import {productDao} from '../dao/factory.js' 
+//DAOS
+import {productDao, cartDao} from '../dao/factory.js' 
+
+//Services
+import { productService } from './product.service.js'
 
 //Errors
 import { NotFoundError } from '../models/errors/notfound.error.js'
 
 class CartService{
+
+    async readOnePopulated(id){
+        const cart =  await cartDao.readOnePopulated(id)
+        if(!cart) throw new NotFoundError('Cart') 
+        return cart
+    }
+
+    async readManyPopulated(){
+        return await cartDao.readManyPopulated()
+    }
+
+    async create(data){
+        return await cartDao.create(data)
+    }
+
+    async updateOne(criteria, newData){
+        const cart = await cartDao.updateOne(criteria, newData)
+        console.log(cart)
+        if(!cart) throw new NotFoundError('Cart')
+        return cart
+    }
+
     async updateProductInCart(cid, pid){
 
-        const item = await productDao.readOne({_id: pid})
-        if (!item){
-            throw new NotFoundError('Product')
-        }
-
-        const cart = await cartDao.readOne({_id: cid})
+        //Búsqueda de producto (service arroja su error)
+        const item = await productService.readOne({_id: pid})
         
-        if (!cart){
-            throw new NotFoundError('Cart')
-        }
+        const cart = await cartDao.readOne({_id: cid})
+        if(!cart) throw new NotFoundError('Cart')
 
         let {products} = cart
         const product = products.find(item => item.product === pid)
