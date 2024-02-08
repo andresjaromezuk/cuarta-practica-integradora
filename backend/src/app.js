@@ -5,6 +5,10 @@ import methodOverride from 'method-override'
 import {apiRouter} from './router/api/apiRouter.js'
 import { mockRouter } from './router/mock/mock.product.router.js'
 import { webRouter } from './router/web/web.router.js'
+import { testRouter } from './router/test/test.router.js'
+
+//Logger
+import {logHandler } from './middleware/log.handler.js'
 
 //DB
 import { connectDB } from './database/mongodb.js'
@@ -44,6 +48,9 @@ app.use(urlencoded({ extended: true }))
 app.use(json())
 app.use(methodOverride('_method'))
 
+//Logger
+app.use(logHandler)
+
 //Authentication
 app.use(sessions)
 app.use(cookies)
@@ -67,3 +74,4 @@ app.use((req,res,next) => {
 app.use('/api', apiRouter)
 app.use('/', webRouter)
 app.use('/mock', mockRouter)
+app.use('/test', testRouter)
