@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { chatController } from '../../controllers/chat.controller.js'
+import { chatController } from '../../controllers/web/chat.controller.js'
 import { apiUserLogged } from '../../middleware/authorization.js'
 import passport from 'passport'
 import { appendJwtAsCookie } from '../../middleware/authentication.js'

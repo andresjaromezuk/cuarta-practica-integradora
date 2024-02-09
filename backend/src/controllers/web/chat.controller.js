@@ -1,4 +1,4 @@
-import { dbChat } from "../dao/mongoose/chat.mongoose.js"
+import { dbChat } from "../../dao/mongoose/chat.mongoose.js"
 import {randomUUID} from 'crypto'
 
 export const chatController = {

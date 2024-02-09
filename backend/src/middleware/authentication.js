@@ -37,9 +37,12 @@ passport.use('register', new LocalStrategy({
   usernameField: 'email'
 }, async (req, _u, _p, done)=>{
   try{
+    req.logger.http(`User - Register: ${req.method} en ${req.url}`)
+    req.logger.info(`Body: ${JSON.stringify(req.body)}`)
     const user = await userService.create(req.body)
     done(null, user)
   } catch (error){
+    req.logger.error(`Error en users authentication.register: ${error.message}`)
     done(error)
   }
 }))

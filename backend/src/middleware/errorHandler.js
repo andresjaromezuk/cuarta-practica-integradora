@@ -1,4 +1,5 @@
 export function errorHandler(error, req, res, next){
+    req.logger.error(error.message)
     if (error.type === 5 ){
         res.status(409)
     } else if (error.type === 1){
@@ -10,6 +11,7 @@ export function errorHandler(error, req, res, next){
     } else if(error.type === 6){
         res.status(422)
     } else{
+        req.logger.fatal(`Error 500 - error handler: ${error.message}`)
         res.status(500)
     }
     console.log(error)
