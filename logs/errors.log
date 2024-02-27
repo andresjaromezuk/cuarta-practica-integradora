@@ -5,3 +5,82 @@
 {"level":"error","message":"User registered"}
 {"level":"error","message":"Error en users authentication.register: User registered"}
 {"level":"error","message":"User registered"}
+{"level":"error","message":"Error en users handlePost: User not found"}
+{"level":"error","message":"User not found"}
+{"level":"error","message":"Error en users handlePost: User not found"}
+{"level":"error","message":"User not found"}
+{"level":"error","message":"Error en users handlePost: User not found"}
+{"level":"error","message":"User not found"}
+{"level":"error","message":"Error en users handlePost: User not found"}
+{"level":"error","message":"User not found"}
+{"level":"error","message":"Authentication error"}
+{"level":"error","message":"Error en users handlePost: User not found"}
+{"level":"error","message":"User not found"}
+{"level":"error","message":"Error en users handlePost: result is not defined"}
+{"level":"error","message":"result is not defined"}
+{"level":"fatal","message":"Error 500 - error handler: result is not defined"}
+{"level":"error","message":"Error en users handlePost: result is not defined"}
+{"level":"error","message":"result is not defined"}
+{"level":"fatal","message":"Error 500 - error handler: result is not defined"}
+{"level":"error","message":"Error en users handlePost: result is not defined"}
+{"level":"error","message":"result is not defined"}
+{"level":"fatal","message":"Error 500 - error handler: result is not defined"}
+{"level":"error","message":"Error en users handlePost: User not found"}
+{"level":"error","message":"User not found"}
+{"level":"error","message":"Error en users handlePost: result is not defined"}
+{"level":"error","message":"result is not defined"}
+{"level":"fatal","message":"Error 500 - error handler: result is not defined"}
+{"level":"error","message":"Error en users handlePost: User not found"}
+{"level":"error","message":"User not found"}
+{"level":"error","message":"Error en users handleGet: email is not defined"}
+{"level":"error","message":"email is not defined"}
+{"level":"fatal","message":"Error 500 - error handler: email is not defined"}
+{"level":"error","message":"Error en users handleGet: User not found"}
+{"level":"error","message":"User not found"}
+{"level":"error","message":"Error en users handleGet: User not found"}
+{"level":"error","message":"User not found"}
+{"level":"error","message":"Error en users handleGet: User not found"}
+{"level":"error","message":"User not found"}
+{"level":"error","message":"Error en users handleGet: User not found"}
+{"level":"error","message":"User not found"}
+{"level":"error","message":"Error en users handleGet: User not found"}
+{"level":"error","message":"User not found"}
+{"level":"error","message":"Error en users handleGet: Link expirado"}
+{"level":"error","message":"Link expirado"}
+{"level":"fatal","message":"Error 500 - error handler: Link expirado"}
+{"level":"error","message":"Error en users handleGet: Link expirado"}
+{"level":"error","message":"Link expirado"}
+{"level":"fatal","message":"Error 500 - error handler: Link expirado"}
+{"level":"error","message":"Error en users handleGet: Link expirado"}
+{"level":"error","message":"Link expirado"}
+{"level":"fatal","message":"Error 500 - error handler: Link expirado"}
+{"level":"error","message":"Error en users handleGet: Link expirado"}
+{"level":"error","message":"Link expirado"}
+{"level":"fatal","message":"Error 500 - error handler: Link expirado"}
+{"level":"error","message":"Error en users handleGet: Link expirado"}
+{"level":"error","message":"Link expirado"}
+{"level":"fatal","message":"Error 500 - error handler: Link expirado"}
+{"level":"error","message":"Authentication error"}
+{"level":"error","message":"Error en users handlePut: data and hash arguments required"}
+{"level":"error","message":"data and hash arguments required"}
+{"level":"fatal","message":"Error 500 - error handler: data and hash arguments required"}
+{"level":"error","message":"Error en users handlePut: data and hash arguments required"}
+{"level":"error","message":"data and hash arguments required"}
+{"level":"fatal","message":"Error 500 - error handler: data and hash arguments required"}
+{"level":"error","message":"Error en users handlePut: data and hash arguments required"}
+{"level":"error","message":"data and hash arguments required"}
+{"level":"fatal","message":"Error 500 - error handler: data and hash arguments required"}
+{"level":"error","message":"Unauthorized"}
+{"level":"fatal","message":"Error 500 - error handler: Unauthorized"}
+{"level":"error","message":"Error en users handlePut: data and hash arguments required"}
+{"level":"error","message":"data and hash arguments required"}
+{"level":"fatal","message":"Error 500 - error handler: data and hash arguments required"}
+{"level":"error","message":"Error en users handlePut: data and hash arguments required"}
+{"level":"error","message":"data and hash arguments required"}
+{"level":"fatal","message":"Error 500 - error handler: data and hash arguments required"}
+{"level":"error","message":"Error en users handlePut: User registered"}
+{"level":"error","message":"User registered"}
+{"level":"error","message":"Error en users handlePut: User registered"}
+{"level":"error","message":"User registered"}
+{"level":"error","message":"Error en users handlePut: No puedes usar la contraseña antigua required"}
+{"level":"error","message":"No puedes usar la contraseña antigua required"}

@@ -15,6 +15,10 @@ userRouter.post('/register',
   handlePost
 )
 
+userRouter.get('/check',
+  handleGet
+)
+
 userRouter.get('/profile', 
   passport.authenticate('jwt', {
     failWithError: true,

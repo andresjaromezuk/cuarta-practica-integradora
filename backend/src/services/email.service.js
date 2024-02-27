@@ -26,6 +26,21 @@ class EmailService{
         await this.transport.sendMail(email)
 
     }
+    
+    async send_restore_email(to, subject, content){
+        const link = "http://localhost:3000/resetPassword.html"
+        const email = {
+            from: "andres.jaromezuk@gmail.com",
+            to: to,
+            subject: subject,
+            html: `
+            <Button><a href="${link}?timestamp=${Date.now()}">Recuparación de email</a></button>
+            `
+        }
+
+        await this.transport.sendMail(email)
+
+    }
 
 }
 

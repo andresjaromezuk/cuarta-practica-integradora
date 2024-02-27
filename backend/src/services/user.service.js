@@ -4,9 +4,13 @@ import { userDao } from "../dao/factory.js"
 //Errors
 import {NotFoundError} from '../models/errors/notfound.error.js'
 import {ConflictError} from '../models/errors/conflict.error.js'
+import { UnprocessableEntityError } from "../models/errors/unprocessable.entity.error.js"
 
 //DTO
 import { UserDto } from "../dto/user.dto.js"
+
+//Utils
+import { isValidPassword } from "../utils/encryptor.js"
 
 class UserService {
     constructor(){}
@@ -29,8 +33,16 @@ class UserService {
     }
 
     async resetPassword (body){
-        await this.readOne(body.email)
+        const {email, password} = body
+        const user = await userDao.readOne(email)
+        const test = isValidPassword(password, user)
+        if(test) throw new UnprocessableEntityError('No puedes usar la contraseña antigua')
         return await userDao.resetPassword(body)
+    }
+   
+    async checkTimestamp (timestamp){
+        const checkTime = Date.now() - timestamp
+        if (checkTime> 3600000) throw new Error('Link expirado') 
     }
 
 }
