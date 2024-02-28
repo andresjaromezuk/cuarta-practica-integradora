@@ -22,3 +22,12 @@ export function apiAdminAccess(req, res, next){
     }
     next()
 }
+
+export function apiAdminAndPremiumAccess(req, res, next){
+    console.log("entra")
+    console.log(req?.user?.role === 'premium' )
+    if(req?.user?.role === 'admin' || req?.user?.role === 'premium' ){
+        return next()
+    }
+    next(new ForbiddenError())
+}

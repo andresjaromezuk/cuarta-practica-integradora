@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { handleGet, handlePost, handlePut, handleDelete } from '../../controllers/product.controller.js'
 import multerMiddleware from '../../middleware/multer.js'
 const upload = multerMiddleware('images', 'product')
-import { apiAdminAccess } from '../../middleware/authorization.js'
+import { apiAdminAccess, apiAdminAndPremiumAccess } from '../../middleware/authorization.js'
 import passport from 'passport'
 
 export const productRouter = Router()
@@ -17,7 +17,7 @@ passport.authenticate('jwt',{
     failWithError: true,
     session:false
   }), 
-apiAdminAccess, 
+apiAdminAndPremiumAccess, 
 handlePost)
 
 // //Modificar producto
@@ -27,7 +27,7 @@ passport.authenticate('jwt',{
     failWithError: true,
     session:false
   }),
-apiAdminAccess, 
+apiAdminAndPremiumAccess, 
 handlePut)
 
 // //Eliminar producto
@@ -36,5 +36,5 @@ passport.authenticate('jwt',{
     failWithError: true,
     session:false
   }),
-apiAdminAccess, 
+apiAdminAndPremiumAccess, 
 handleDelete)

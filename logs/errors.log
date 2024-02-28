@@ -84,3 +84,18 @@
 {"level":"error","message":"User registered"}
 {"level":"error","message":"Error en users handlePut: No puedes usar la contraseña antigua required"}
 {"level":"error","message":"No puedes usar la contraseña antigua required"}
+{"level":"error","message":"Forbidden Error"}
+{"level":"error","message":"Error en products handlePost: Cannot set headers after they are sent to the client"}
+{"level":"error","message":"Error en users authentication.register: User registered"}
+{"level":"error","message":"User registered"}
+{"level":"error","message":"Forbidden Error"}
+{"level":"error","message":"Error en products handlePost: E11000 duplicate key error collection: test.products index: code_1 dup key: { code: \"yer999\" }"}
+{"level":"error","message":"Error en products handlePost: E11000 duplicate key error collection: test.products index: code_1 dup key: { code: \"yer999\" }"}
+{"level":"error","message":"E11000 duplicate key error collection: test.products index: code_1 dup key: { code: \"yer999\" }"}
+{"level":"fatal","message":"Error 500 - error handler: E11000 duplicate key error collection: test.products index: code_1 dup key: { code: \"yer999\" }"}
+{"level":"error","message":"Error en products handlePost: req is not defined"}
+{"level":"error","message":"req is not defined"}
+{"level":"fatal","message":"Error 500 - error handler: req is not defined"}
+{"level":"error","message":"Error en products handlePost: E11000 duplicate key error collection: test.products index: code_1 dup key: { code: \"yer999\" }"}
+{"level":"error","message":"E11000 duplicate key error collection: test.products index: code_1 dup key: { code: \"yer999\" }"}
+{"level":"fatal","message":"Error 500 - error handler: E11000 duplicate key error collection: test.products index: code_1 dup key: { code: \"yer999\" }"}

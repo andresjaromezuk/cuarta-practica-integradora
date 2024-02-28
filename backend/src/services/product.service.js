@@ -14,18 +14,25 @@ class ProductService{
         return await productDao.readManyPaginated(data, entity)
     } 
 
-    async create(element, file){
+    async create(element, file, user){
+        if (user.role === 'premium'){
+            element.owner = user.email
+        } 
         return await productDao.create(element, file) 
     }
 
     async updateOne(criteria, newData, file){
-        await this.readOne(criteria)
-        return await productDao.updateOne(criteria, newData, file)
+        const product = await this.readOne(criteria)
+        if (product.owner ===  user.role || user.role === 'admin'){
+            return await productDao.updateOne(criteria, newData, file)
+        }
     }
 
-    async deleteOne(id){
-        await this.readOne(criteria)
-        return await productDao.delete(id)
+    async deleteOne(id, user){
+        const product = await this.readOne(criteria)
+        if (product.owner ===  user.role || user.role === 'admin'){
+            return await productDao.delete(id)
+        }
     }
 }
 
