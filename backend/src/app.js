@@ -38,6 +38,7 @@ await connectDB()
 import {PORT} from './config/server.config.js'
 const app = express()
 
+
 //API
 app.use(cors({ credentials: true, origin: 'http://localhost:3000' }))
 

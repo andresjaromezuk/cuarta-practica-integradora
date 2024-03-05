@@ -1,0 +1,51 @@
+components: 
+  schemas:
+    Product:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Generado por Mongo DB.
+        title: 
+          type: String
+          description: Nombre del producto.
+        description: 
+          type: String
+          description: Descripción del producto.
+        price: 
+          type: Integer
+          description: Precio del producto.
+        thumbnail: 
+          type: Array
+          description: Imagen del producto.
+        code: 
+          type: String
+          description: Código del producto.
+        stock: 
+          type: Integer
+          description: Stock del producto.
+        status: 
+          type: Boolean
+          description: Status del producto.
+        category: 
+          type: String
+          description: Categoría del producto.
+        owner: 
+          type: String
+          description: Creador del producto.
+      example:    
+        _id: "dab750b0-5e49-458c-b99d-2a0003253680"
+        title: "Arroz"
+        description: "No se pasa"
+        price: 300
+        thumbnail: [
+          "http://localhost:8080/static/images/imgproduct_1701892758518.jpg"
+        ]
+        code: "abc789"
+        stock: 98
+        status: true
+        category: "productos"
+        owner: "admin"
+
+
+  

@@ -6,10 +6,13 @@ import { sessionRouter } from './session.router.js'
 import { errorHandler } from '../../middleware/errorHandler.js'
 import { customResponses } from '../../middleware/customResponses.js'
 import { ticketRouter } from './ticket.router.js'
+import { docsRouter } from './docs.router.js'
 
 export const apiRouter = Router()
 
 apiRouter.use(customResponses)
+
+apiRouter.use('/docs', docsRouter)
 
 apiRouter.use('/products', productRouter)
 

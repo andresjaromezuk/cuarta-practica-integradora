@@ -1,0 +1,37 @@
+components: 
+  schemas:
+    Cart:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Generado por Mongo DB.
+        products: 
+          type: array
+          items:
+            type: object
+            properties:
+              product:
+                type: object
+                $ref: '#components/schemas/Product'
+              quantity: 
+                type: integer
+        user_id: 
+          type: string
+      example:
+          _id: "7afa55af-3ef9-48dd-bd61-3b0dd68a5286"
+          products: 
+            - product:
+                title: "Arroz"
+                description: "No se pasa"
+                price: 300
+                thumbnail: [
+                  "http://localhost:8080/static/images/imgproduct_1701892758518.jpg"
+                ]
+                code: "abc789"
+                stock: 98
+                status: true
+                category: "productos"
+                owner: "admin"
+              quantity: 3
+          user_id: "8934193a-046c-4b6c-99a5-52614de1cd3"

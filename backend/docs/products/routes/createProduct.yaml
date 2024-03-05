@@ -1,0 +1,20 @@
+paths:
+  /api/products:
+    post:
+      summary: Permite crear un producto
+      tags: 
+        - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: '#components/requestBodies/createProduct'
+      responses:
+        "201":
+          description: Producto creado exitosamente.
+          content: 
+            application/json:
+              schema:
+                $ref: '#components/schemas/Product'
+        "500":
+          description: Error interno del servidor
