@@ -1,0 +1,16 @@
+components: 
+  schemas:
+    EmptyCart:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Generado por Mongo DB.
+        products: 
+          type: array
+        user_id: 
+          type: string
+      example:
+          _id: "7afa55af-3ef9-48dd-bd61-3b0dd68a5286"
+          products: []
+          user_id: ""

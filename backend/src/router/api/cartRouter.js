@@ -10,7 +10,6 @@ cartRouter.post('/', handlePost)
 
 //Obtener carrito
  cartRouter.get('/:id?', handleGet) 
-
  
  // //Actualizar carrito
  cartRouter.put('/:cid', handlePut)

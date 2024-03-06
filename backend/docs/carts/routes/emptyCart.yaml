@@ -1,0 +1,22 @@
+paths:
+  /api/carts/:cid:
+    delete:
+      summary: Vacía el carrito de todos los productos
+      tags: 
+        - Carts
+      parameters:
+        - name: cid
+          in: path
+          description: ID del carrito
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Carrito vaciado exitosamente.
+          content: 
+            application/json:
+              schema:
+                $ref: '#components/schemas/EmptyCart'
+        "500":
+          description: Error interno del servidor
