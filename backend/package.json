@@ -6,7 +6,8 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon src/app.js",
-    "start": "node src/app.js"
+    "start": "node src/app.js",
+    "test": "mocha ./src/test/services/cart.service.test.js"
   },
   "keywords": [],
   "author": "",
@@ -36,6 +37,8 @@
     "winston": "^3.11.0"
   },
   "devDependencies": {
-    "@faker-js/faker": "^8.4.0"
+    "@faker-js/faker": "^8.4.0",
+    "chai": "^5.1.0",
+    "mocha": "^10.3.0"
   }
 }

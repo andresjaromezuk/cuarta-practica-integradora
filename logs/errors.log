@@ -99,3 +99,69 @@
 {"level":"error","message":"Error en products handlePost: E11000 duplicate key error collection: test.products index: code_1 dup key: { code: \"yer999\" }"}
 {"level":"error","message":"E11000 duplicate key error collection: test.products index: code_1 dup key: { code: \"yer999\" }"}
 {"level":"fatal","message":"Error 500 - error handler: E11000 duplicate key error collection: test.products index: code_1 dup key: { code: \"yer999\" }"}
+{"level":"error","message":"Error en products handleGet: Maximum call stack size exceeded"}
+{"level":"error","message":"Maximum call stack size exceeded"}
+{"level":"fatal","message":"Error 500 - error handler: Maximum call stack size exceeded"}
+{"level":"error","message":"Error en products handleGet: Maximum call stack size exceeded"}
+{"level":"error","message":"Maximum call stack size exceeded"}
+{"level":"fatal","message":"Error 500 - error handler: Maximum call stack size exceeded"}
+{"level":"error","message":"Error en products handleGet: Maximum call stack size exceeded"}
+{"level":"error","message":"Maximum call stack size exceeded"}
+{"level":"fatal","message":"Error 500 - error handler: Maximum call stack size exceeded"}
+{"level":"error","message":"Error en products handleGet: Maximum call stack size exceeded"}
+{"level":"error","message":"Maximum call stack size exceeded"}
+{"level":"fatal","message":"Error 500 - error handler: Maximum call stack size exceeded"}
+{"level":"error","message":"Error en products handleGet: Maximum call stack size exceeded"}
+{"level":"error","message":"Maximum call stack size exceeded"}
+{"level":"fatal","message":"Error 500 - error handler: Maximum call stack size exceeded"}
+{"level":"error","message":"Error en products handleGet: productDao is not defined"}
+{"level":"error","message":"productDao is not defined"}
+{"level":"fatal","message":"Error 500 - error handler: productDao is not defined"}
+{"level":"error","message":"Error en products handleGet: Maximum call stack size exceeded"}
+{"level":"error","message":"Maximum call stack size exceeded"}
+{"level":"fatal","message":"Error 500 - error handler: Maximum call stack size exceeded"}
+{"level":"error","message":"Unauthorized"}
+{"level":"fatal","message":"Error 500 - error handler: Unauthorized"}
+{"level":"error","message":"Forbidden Error"}
+{"level":"error","message":"Error en products handlePost: newProduct is not defined"}
+{"level":"error","message":"newProduct is not defined"}
+{"level":"fatal","message":"Error 500 - error handler: newProduct is not defined"}
+{"level":"error","message":"Authentication error"}
+{"level":"error","message":"Error en products handleDelete: criteria is not defined"}
+{"level":"error","message":"criteria is not defined"}
+{"level":"fatal","message":"Error 500 - error handler: criteria is not defined"}
+{"level":"error","message":"Error en products handleDelete: Parameter \"filter\" to findOne() must be an object, got \"dcd82249-48b0-4409-80d7-b160044d2f1c\" (type string)"}
+{"level":"error","message":"Parameter \"filter\" to findOne() must be an object, got \"dcd82249-48b0-4409-80d7-b160044d2f1c\" (type string)"}
+{"level":"fatal","message":"Error 500 - error handler: Parameter \"filter\" to findOne() must be an object, got \"dcd82249-48b0-4409-80d7-b160044d2f1c\" (type string)"}
+{"level":"error","message":"Error en products handleDelete: criteria is not defined"}
+{"level":"error","message":"criteria is not defined"}
+{"level":"fatal","message":"Error 500 - error handler: criteria is not defined"}
+{"level":"error","message":"Error en products handlePost: E11000 duplicate key error collection: test.products index: code_1 dup key: { code: \"cafe543\" }"}
+{"level":"error","message":"E11000 duplicate key error collection: test.products index: code_1 dup key: { code: \"cafe543\" }"}
+{"level":"fatal","message":"Error 500 - error handler: E11000 duplicate key error collection: test.products index: code_1 dup key: { code: \"cafe543\" }"}
+{"level":"error","message":"Error en products handlePost: E11000 duplicate key error collection: test.products index: code_1 dup key: { code: \"cafe435\" }"}
+{"level":"error","message":"E11000 duplicate key error collection: test.products index: code_1 dup key: { code: \"cafe435\" }"}
+{"level":"fatal","message":"Error 500 - error handler: E11000 duplicate key error collection: test.products index: code_1 dup key: { code: \"cafe435\" }"}
+{"level":"error","message":"Error en products handlePost: E11000 duplicate key error collection: test.products index: code_1 dup key: { code: \"cafe435\" }"}
+{"level":"error","message":"E11000 duplicate key error collection: test.products index: code_1 dup key: { code: \"cafe435\" }"}
+{"level":"fatal","message":"Error 500 - error handler: E11000 duplicate key error collection: test.products index: code_1 dup key: { code: \"cafe435\" }"}
+{"level":"error","message":"Error en products handleDelete: productDao.delete is not a function"}
+{"level":"error","message":"productDao.delete is not a function"}
+{"level":"fatal","message":"Error 500 - error handler: productDao.delete is not a function"}
+{"level":"error","message":"Error en products handleDelete: ENOENT: no such file or directory, unlink 'C:\\Users\\Andres\\Desktop\\DESAFIO - TEST\\backend\\static\\images\\undefined'"}
+{"level":"error","message":"ENOENT: no such file or directory, unlink 'C:\\Users\\Andres\\Desktop\\DESAFIO - TEST\\backend\\static\\images\\undefined'"}
+{"level":"fatal","message":"Error 500 - error handler: ENOENT: no such file or directory, unlink 'C:\\Users\\Andres\\Desktop\\DESAFIO - TEST\\backend\\static\\images\\undefined'"}
+{"level":"error","message":"Unauthorized"}
+{"level":"fatal","message":"Error 500 - error handler: Unauthorized"}
+{"level":"error","message":"Error en products handlePut: user is not defined"}
+{"level":"error","message":"user is not defined"}
+{"level":"fatal","message":"Error 500 - error handler: user is not defined"}
+{"level":"error","message":"Error en products handlePut: Cannot read properties of undefined (reading 'req')"}
+{"level":"error","message":"Cannot read properties of undefined (reading 'req')"}
+{"level":"fatal","message":"Error 500 - error handler: Cannot read properties of undefined (reading 'req')"}
+{"level":"error","message":"Error en products handleDelete: ENOENT: no such file or directory, unlink 'C:\\Users\\Andres\\Desktop\\DESAFIO - TEST\\backend\\static\\images\\undefined'"}
+{"level":"error","message":"ENOENT: no such file or directory, unlink 'C:\\Users\\Andres\\Desktop\\DESAFIO - TEST\\backend\\static\\images\\undefined'"}
+{"level":"fatal","message":"Error 500 - error handler: ENOENT: no such file or directory, unlink 'C:\\Users\\Andres\\Desktop\\DESAFIO - TEST\\backend\\static\\images\\undefined'"}
+{"level":"error","message":"Error en products handleDelete: ENOENT: no such file or directory, unlink 'C:\\Users\\Andres\\Desktop\\DESAFIO - TEST\\backend\\static\\images\\imgproduct_1710081712001.JPG'"}
+{"level":"error","message":"ENOENT: no such file or directory, unlink 'C:\\Users\\Andres\\Desktop\\DESAFIO - TEST\\backend\\static\\images\\imgproduct_1710081712001.JPG'"}
+{"level":"fatal","message":"Error 500 - error handler: ENOENT: no such file or directory, unlink 'C:\\Users\\Andres\\Desktop\\DESAFIO - TEST\\backend\\static\\images\\imgproduct_1710081712001.JPG'"}

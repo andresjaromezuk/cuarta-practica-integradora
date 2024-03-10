@@ -6,3 +6,8 @@ export async function connectDB(){
     console.log("Se conectó correctamente a la DB")
 }
 
+export async function disconnectDB() {
+    await mongoose.disconnect()
+    console.log(`desconectado a base de datos`)
+}
+

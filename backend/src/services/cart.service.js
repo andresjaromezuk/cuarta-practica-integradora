@@ -69,6 +69,10 @@ class CartService{
         const product = await cartDao.updateOne({_id:cid},{$pull:{products: { product: pid }}})
         return product
     }
+
+    async deleteOne(id){
+        return await cartDao.deleteOne(id)
+    }
 }
 
 export const cartService = new CartService()

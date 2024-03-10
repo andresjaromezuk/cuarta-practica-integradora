@@ -44,7 +44,7 @@ export class MongooseDao{
       }
     
       async deleteOne(criteria) {
-        const deletedEntity = await this.#model.findOneAndDelete(criteria, { projection: { _id: 0 } }).lean()
+        const deletedEntity = await this.#model.findOneAndDelete(criteria).lean()
         if (!deletedEntity) throw new Error('no encontrado')
         return deletedEntity
       }

@@ -8,7 +8,7 @@ import path from 'path'
 
 
 const productSchema = new Schema({
-  _id: { type: String, default: randomUUID },
+  _id: { type: String},
   title : { type: String, required: true }, 
   description : { type: String, required: true },
   price : { type: Number, required: true },
@@ -38,7 +38,7 @@ class ProductDaoMongoose extends MongooseDao{
   }
 
   async create(element, file){
-    if (file) element.thumbnail = [`http://localhost:8080/static/images/${file.filename}`]
+    if (Object.keys(file).length > 0) element.thumbnail = [`http://localhost:8080/static/images/${file.filename}`]
     return await super.create(element)
   }
 

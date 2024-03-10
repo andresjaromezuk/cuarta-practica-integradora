@@ -34,7 +34,7 @@ export async function handlePut(req, res, next){
     try {
         req.logger.http(`Products - handlePut: ${req.method} en ${req.url}`)
         req.logger.info(`Body: ${JSON.stringify(req.body)}`)
-        const product = await productService.updateOne({ _id: req.params.id }, req.body, req.file)
+        const product = await productService.updateOne({ _id: req.params.id }, req.body, req.file, req.user)
         return res.status(200).json({status: "Success", payload: product})
     } catch (error) {
         req.logger.error(`Error en products handlePut: ${error.message}`)
@@ -46,7 +46,7 @@ export async function handleDelete(req, res, next){
     try {
         req.logger.http(`Products - handleDelete: ${req.method} en ${req.url}`)
         req.logger.info(`Id: ${req.params.id}`)
-        const product = await productService.deleteOne(req.params.id, req.user)
+        const product = await productService.deleteOne({ _id: req.params.id }, req.user)
         return res.status(200).json({status: "Success", payload: product})
     } catch (error) {
         req.logger.error(`Error en products handleDelete: ${error.message}`)
