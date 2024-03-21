@@ -11,6 +11,10 @@ class UserRepository{
         return await userDao.uploadDocument(id, document)
     }
 
+    async updateOne(criteria, newData){
+        return await userDao.updateOne(criteria, newData)
+    }
+
 }
 
 export const userRepository = new UserRepository()

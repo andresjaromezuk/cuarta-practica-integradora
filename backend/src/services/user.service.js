@@ -66,10 +66,11 @@ class UserService {
         let user = await userRepository.readOne(id)
         const documents = user.documents.length
         if (documents < 3){
-            throw UnprocessableEntityError("Documents")
+            throw new UnprocessableEntityError("Documents")
         }
         user.role = "premium"
-        //user = await user
+        user = await userRepository.updateOne({_id: id}, user)
+        return user
     }
 
 }

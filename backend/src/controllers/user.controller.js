@@ -40,7 +40,7 @@ export async function handleGet(req, res, next){
 export async function handlePost(req, res, next){
     try {
         if (req.path.includes('premium')){
-            const user = userService.setUserToPremium({_id: req.params.id})
+            const user = await userService.setUserToPremium({_id: req.params.id})
             return res['successfullPost'](user)
         }else if (req.params.id) {
             const user = await userService.uploadDocument(req.file, req.params.id)

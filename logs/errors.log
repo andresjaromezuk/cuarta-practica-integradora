@@ -186,3 +186,15 @@
 {"level":"error","message":"Authentication error"}
 {"level":"error","message":"Authentication error"}
 {"level":"error","message":"Authentication error"}
+{"level":"error","message":"Error en users handlePost: Documents required"}
+{"level":"error","message":"Documents required"}
+{"level":"error","message":"Error en users handlePost: criteria is not defined"}
+{"level":"error","message":"criteria is not defined"}
+{"level":"fatal","message":"Error 500 - error handler: criteria is not defined"}
+{"level":"error","message":"Error en users handlePost: criteria is not defined"}
+{"level":"error","message":"criteria is not defined"}
+{"level":"fatal","message":"Error 500 - error handler: criteria is not defined"}
+{"level":"error","message":"Error en users handlePost: criteria is not defined"}
+{"level":"error","message":"criteria is not defined"}
+{"level":"fatal","message":"Error 500 - error handler: criteria is not defined"}
+{"level":"error","message":"Authentication error"}

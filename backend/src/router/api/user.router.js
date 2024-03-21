@@ -45,5 +45,11 @@ userRouter.post('/:id/documents', uploadDocument.single('image'), handlePost)
 
 userRouter.put('/resetPassword', handlePut)
 
-userRouter.post('/premium/:id', handleGet)
+userRouter.post('/premium/:id', 
+passport.authenticate('jwt', {
+  failWithError: true,
+  session: false
+}),
+apiUserLogged, 
+handlePost)
 
