@@ -37,13 +37,11 @@ class ProductDaoMongoose extends MongooseDao{
     return await super.readManyPaginated(data, entity)
   }
 
-  async create(element, file){
-    if (Object.keys(file).length > 0) element.thumbnail = [`http://localhost:8080/static/images/${file.filename}`]
+  async create(element){
     return await super.create(element)
   }
 
-  async updateOne(criteria, newData, file ){
-    if (file) newData.thumbnail = [`http://localhost:8080/static/images/${file.filename}`]
+  async updateOne(criteria, newData ){
     return await super.updateOne(criteria, newData)
   }
 
@@ -51,9 +49,9 @@ class ProductDaoMongoose extends MongooseDao{
     const product = await super.deleteOne({_id: id})
     
     if (product.thumbnail.length > 0){
-        const filename = product.thumbnail[0].split("images/")[1]
+        const filename = product.thumbnail[0].split("products/")[1]
         console.log(filename)
-        const filePath = path.join(__dirname, `../static/images/${filename}`)
+        const filePath = path.join(__dirname, `../static/images/products/${filename}`)
         console.log(filePath)
         await fs.unlink(filePath)
     }

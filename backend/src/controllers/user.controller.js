@@ -8,7 +8,7 @@ export async function handleGet(req, res, next){
        let result
 
        if(req.path.includes('profile')){
-            result = await userService.readOne(req.user.email)
+            result = await userService.readOne({email: req.user.email})
        }else if (req.path.includes('check')){
            console.log(req.query)
             const {q} = req.query
@@ -17,13 +17,11 @@ export async function handleGet(req, res, next){
             const email = req.query.email
             switch(q){
                 case 'restore':
-                    console.log("Entraaa")
-                    await userService.readOne(email)
+                    await userService.readOne({email: email})
                     await emailService.send_restore_email(email, "Recuperación de contraseña")
                     return res['successfullGet']("OK")
                 break
                 case 'reset':
-                    console.log("ENTRA")
                     console.log(timestamp)
                     await userService.checkTimestamp(timestamp)
                     return res['successfullGet']("OK")
@@ -41,7 +39,15 @@ export async function handleGet(req, res, next){
 
 export async function handlePost(req, res, next){
     try {
-        return res['successfullPost'](req.jwt)
+        if (req.path.includes('premium')){
+            const user = userService.setUserToPremium({_id: req.params.id})
+            return res['successfullPost'](user)
+        }else if (req.params.id) {
+            const user = await userService.uploadDocument(req.file, req.params.id)
+            return res['successfullPost'](user)
+        }else{
+            return res['successfullPost'](req.jwt)
+        }
     } catch (error) {
         req.logger.error(`Error en users handlePost: ${error.message}`)
         next(error)

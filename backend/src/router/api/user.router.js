@@ -1,8 +1,12 @@
 import { Router } from 'express'
+import passport from 'passport'
 import { handleGet,handlePost, handlePut } from '../../controllers/user.controller.js'
 import {appendJwt} from '../../middleware/authentication.js'
 import {apiUserLogged, apiAdminAccess} from '../../middleware/authorization.js'
-import passport from 'passport'
+import multerMiddleware from '../../middleware/multer.js'
+const uploadProfile =  multerMiddleware('profiles', 'profile')
+const uploadDocument = multerMiddleware('documents', 'document')
+
 
 export const userRouter = Router()
 
@@ -37,5 +41,9 @@ userRouter.get('/',
   handleGet
  )
 
+userRouter.post('/:id/documents', uploadDocument.single('image'), handlePost)
+
 userRouter.put('/resetPassword', handlePut)
+
+userRouter.post('/premium/:id', handleGet)
 

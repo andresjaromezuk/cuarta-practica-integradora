@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { handleGet, handlePost, handlePut, handleDelete } from '../../controllers/product.controller.js'
 import multerMiddleware from '../../middleware/multer.js'
-const upload = multerMiddleware('images', 'product')
+const upload = multerMiddleware('products', 'product')
 import { apiAdminAccess, apiAdminAndPremiumAccess } from '../../middleware/authorization.js'
 import passport from 'passport'
 

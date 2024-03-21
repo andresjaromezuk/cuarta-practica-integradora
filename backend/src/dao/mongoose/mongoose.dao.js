@@ -35,7 +35,7 @@ export class MongooseDao{
     }
 
     async updateOne(criteria, newData){
-        const elementUpdated = await this.#model.findOneAndUpdate(criteria, newData, { new: true, projection: { _id: 0 } })
+        const elementUpdated = await this.#model.findOneAndUpdate(criteria, newData, { new: true })
         return elementUpdated
     }
 

@@ -12,6 +12,8 @@ const userSchema = new mongoose.Schema({
   age: { type: Number, required: true },
   cartId: { type: Number, default: null},
   role: { type: String, default: "user"},
+  documents: [{name: {type: String}, reference:{type: String}}],
+  last_connection: { type: String, default: null},
 }, {
   strict: 'throw',
   versionKey: false,
@@ -56,12 +58,17 @@ class UserDaoMongoose extends MongooseDao{
   }
 
   async readOne(email){
-    const result = await mongoose.model('users').findOne({email: email})
+    const result = await mongoose.model('users').findOne(email)
     return result 
   }
   
   async readMany(){
     const result = await mongoose.model('users').find({}).select('-password')
+    return result 
+  }
+  
+  async uploadDocument(id, document){
+    const result = await super.updateOne(id,{ $set: { documents: document } })
     return result 
   }
 }

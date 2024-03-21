@@ -15,13 +15,17 @@ class SessionService{
 
     async login (email, password){
      
-        const user = await userDao.readOne(email)
+        let user = await userDao.readOne({email:email})
     
         if(!user) throw new AuthenticationError()
         
         const isValid = isValidPassword(password, user)
     
         if(!isValid) throw new AuthenticationError()
+
+        user.last_connection = new Date()
+
+        user = await userDao.updateOne({email:email}, user) 
         
         return new UserDto(user).dto()
     }

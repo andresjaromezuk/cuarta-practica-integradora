@@ -1,11 +1,4 @@
 export class UserDto{
-    #_id
-    #email
-    #firstName
-    #lastName
-    #age
-    #cartId
-    #role
    
     constructor(user){
         this._id = user._id
@@ -15,6 +8,8 @@ export class UserDto{
         this.age = user.age
         this.cartId = user.cartId
         this.role = user.role
+        this.documents = user.documents
+        this.last_connection = user.last_connection
     }
 
     dto(){
@@ -25,7 +20,9 @@ export class UserDto{
            lastName: this.lastName,
            age: this.age,
            cartId: this.cartId,
-           role: this.role
+           role: this.role,
+           documents : this.documents,
+           last_connection : this.last_connection
         }
     }
 

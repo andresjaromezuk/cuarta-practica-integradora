@@ -165,3 +165,24 @@
 {"level":"error","message":"Error en products handleDelete: ENOENT: no such file or directory, unlink 'C:\\Users\\Andres\\Desktop\\DESAFIO - TEST\\backend\\static\\images\\imgproduct_1710081712001.JPG'"}
 {"level":"error","message":"ENOENT: no such file or directory, unlink 'C:\\Users\\Andres\\Desktop\\DESAFIO - TEST\\backend\\static\\images\\imgproduct_1710081712001.JPG'"}
 {"level":"fatal","message":"Error 500 - error handler: ENOENT: no such file or directory, unlink 'C:\\Users\\Andres\\Desktop\\DESAFIO - TEST\\backend\\static\\images\\imgproduct_1710081712001.JPG'"}
+{"level":"error","message":"Parameter \"filter\" to findOne() must be an object, got \"janoo@mail.com\" (type string)"}
+{"level":"fatal","message":"Error 500 - error handler: Parameter \"filter\" to findOne() must be an object, got \"janoo@mail.com\" (type string)"}
+{"level":"error","message":"Unauthorized"}
+{"level":"fatal","message":"Error 500 - error handler: Unauthorized"}
+{"level":"error","message":"Unauthorized"}
+{"level":"fatal","message":"Error 500 - error handler: Unauthorized"}
+{"level":"error","message":"Error en products handleDelete: ENOENT: no such file or directory, unlink 'C:\\Users\\Andres\\Desktop\\CUARTA PRACTICA INTEGRADORA\\backend\\static\\images\\products\\products\\imgproduct_1710687500336.jpg'"}
+{"level":"error","message":"ENOENT: no such file or directory, unlink 'C:\\Users\\Andres\\Desktop\\CUARTA PRACTICA INTEGRADORA\\backend\\static\\images\\products\\products\\imgproduct_1710687500336.jpg'"}
+{"level":"fatal","message":"Error 500 - error handler: ENOENT: no such file or directory, unlink 'C:\\Users\\Andres\\Desktop\\CUARTA PRACTICA INTEGRADORA\\backend\\static\\images\\products\\products\\imgproduct_1710687500336.jpg'"}
+{"level":"error","message":"Error en users handlePost: Field `document` is not in schema and strict mode is set to throw."}
+{"level":"error","message":"Field `document` is not in schema and strict mode is set to throw."}
+{"level":"fatal","message":"Error 500 - error handler: Field `document` is not in schema and strict mode is set to throw."}
+{"level":"error","message":"Error en users handlePost: Cast to embedded failed for value \"{\n  name: 'imgprofile_1710690059271.png',\n  reference: [\n    'http://localhost:8080/static/images/documents/imgprofile_1710690059271.png'\n  ]\n}\" (type Object) at path \"documents\" because of \"CastError\""}
+{"level":"error","message":"Cast to embedded failed for value \"{\n  name: 'imgprofile_1710690059271.png',\n  reference: [\n    'http://localhost:8080/static/images/documents/imgprofile_1710690059271.png'\n  ]\n}\" (type Object) at path \"documents\" because of \"CastError\""}
+{"level":"fatal","message":"Error 500 - error handler: Cast to embedded failed for value \"{\n  name: 'imgprofile_1710690059271.png',\n  reference: [\n    'http://localhost:8080/static/images/documents/imgprofile_1710690059271.png'\n  ]\n}\" (type Object) at path \"documents\" because of \"CastError\""}
+{"level":"error","message":"Unauthorized"}
+{"level":"fatal","message":"Error 500 - error handler: Unauthorized"}
+{"level":"error","message":"Authentication error"}
+{"level":"error","message":"Authentication error"}
+{"level":"error","message":"Authentication error"}
+{"level":"error","message":"Authentication error"}

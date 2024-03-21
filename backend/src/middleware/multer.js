@@ -6,7 +6,7 @@ export default function multerMiddleware(folder, entity){
 
     const storage = multer.diskStorage({
         destination : function(req,file,cb){
-            cb(null,path.join(__dirname,'../static/' + folder));
+            cb(null,path.join(__dirname,'../static/images/' + folder));
         },
 
         filename : function(req,file,cb){
